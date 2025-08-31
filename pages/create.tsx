@@ -5,9 +5,11 @@ import { useState } from "react";
 import { Plus, Save, Eye, ArrowLeft, Trash2, Tag, Sparkle } from "lucide-react";
 import { useRouter } from "next/router";
 import AIQuestionGenerator from "../components/AIQuestionGenerator";
+import { toast, Toaster } from "sonner";
 
 export default function Create() {
     const router = useRouter();
+    const [title, setTitle] = useState("Would You Rather");
     const [optionOne, setOptionOne] = useState("");
     const [optionTwo, setOptionTwo] = useState("");
     const [createdQuestions, setCreatedQuestions] = useState<WouldYouRatherQuestion[]>([]);
@@ -20,7 +22,7 @@ export default function Create() {
 
     const handleCreateQuestion = () => {
         if (!optionOne.trim() || !optionTwo.trim()) {
-            alert("Please fill in both options!");
+            toast.error("Please fill in both options!");
             return;
         }
 
@@ -39,21 +41,36 @@ export default function Create() {
         setCreatedQuestions(prev => prev.filter(q => q.id !== id));
     };
 
-    const handleSaveQuestions = () => {
+    const handleSaveQuestions = async () => {
         // In a real app, you'd save to a database or local storage
         // For now, we'll just show a success message
         if (createdQuestions.length === 0) {
-            alert("No questions to save!");
+            toast.error("No questions to save!");
             return;
         }
 
-        // Save to localStorage for demo purposes
-        const existingQuestions = JSON.parse(localStorage.getItem('customQuestions') || '[]');
-        const updatedQuestions = [...existingQuestions, ...createdQuestions];
-        localStorage.setItem('customQuestions', JSON.stringify(updatedQuestions));
-
-        alert(`Successfully saved ${createdQuestions.length} questions!`);
-        setCreatedQuestions([]);
+        // Save to localStorage for demo purposes with title
+        const questionSet = {
+            title: title,
+            questions: createdQuestions,
+        };
+        console.log(questionSet)
+        const res = await fetch("/api/main/create", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(questionSet)
+        })
+        const data = await res.json();
+        console.log(data)
+        if (!res.ok) {
+            toast.error(data.message || "ERROR JUST HAPPEND")
+            return;
+        }
+        router.push('/')
+        console.log('Saved question set:', questionSet);
+        // setCreatedQuestions([]);
     };
 
     // Preview Mode
@@ -63,10 +80,11 @@ export default function Create() {
         return (
             <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
                 <div className="max-w-6xl mx-auto px-6 py-8">
+                    <Toaster />
                     {/* Header */}
                     <div className="text-center mb-12">
-                        <h1 className="text-4xl font-bold text-white mb-4">Preview Mode</h1>
-                        <p className="text-gray-300 mb-8">See how your questions look in the game</p>
+                        <h1 className="text-4xl font-bold text-white mb-4">{title}</h1>
+                        <p className="text-gray-300 mb-8">Preview Mode - See how your questions look in the game</p>
 
                         <div className="flex items-center justify-center space-x-6 mb-4">
                             <span className="text-lg text-gray-400">
@@ -144,14 +162,23 @@ export default function Create() {
                     </h1>
                     <p className="text-xl text-gray-300 mb-8">Design your own "Would You Rather" questions ✨</p>
 
-                    <Button
-                        onClick={() => router.push('/')}
-                        variant="outline"
-                        className="border-gray-400 text-gray-400 hover:bg-gray-400 hover:text-black"
-                    >
-                        <ArrowLeft className="w-4 h-4 mr-2" />
-                        Back to Game
-                    </Button>
+                    {/* Title Input */}
+                    <div className="max-w-md mx-auto mb-8">
+                        <label className="block text-white font-semibold mb-3 text-lg">
+                            📝 Question Set Title
+                        </label>
+                        <input
+                            type="text"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            placeholder="e.g., Would You Rather for Friends"
+                            className="w-full p-4 bg-gray-700 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none text-center text-xl font-semibold"
+                            maxLength={50}
+                        />
+                        <div className="text-right text-gray-400 text-sm mt-1">
+                            {title.length}/50 characters
+                        </div>
+                    </div>
                 </div>
 
                 {/* Question Creator Tabs */}
@@ -264,19 +291,8 @@ export default function Create() {
                                     <div className="flex justify-between items-start mb-4">
                                         <div className="flex items-center space-x-3">
                                             <span className="text-gray-400 font-semibold">Question {index + 1}</span>
-                                            {question.category && (
-                                                <span className="px-2 py-1 bg-blue-600 text-white text-xs rounded-full">
-                                                    {question.category}
-                                                </span>
-                                            )}
-                                            {question.difficulty && (
-                                                <span className={`px-2 py-1 text-xs rounded-full ${question.difficulty === 'easy' ? 'bg-green-600 text-white' :
-                                                    question.difficulty === 'medium' ? 'bg-yellow-600 text-white' :
-                                                        'bg-red-600 text-white'
-                                                    }`}>
-                                                    {question.difficulty}
-                                                </span>
-                                            )}
+
+
                                         </div>
                                         <Button
                                             onClick={() => handleDeleteQuestion(question.id)}
@@ -299,18 +315,7 @@ export default function Create() {
                                         </div>
                                     </div>
 
-                                    {question.tags && question.tags.length > 0 && (
-                                        <div className="flex items-center space-x-2">
-                                            <Tag className="w-4 h-4 text-gray-400" />
-                                            <div className="flex flex-wrap gap-2">
-                                                {question.tags.map(tag => (
-                                                    <span key={tag} className="px-2 py-1 bg-gray-600 text-gray-300 text-xs rounded">
-                                                        {tag}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
+
                                 </div>
                             ))}
                         </div>

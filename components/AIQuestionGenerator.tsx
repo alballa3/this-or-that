@@ -47,17 +47,11 @@ export default function AIQuestionGenerator({ onQuestionsGenerated }: AIQuestion
                     id: `ai-${Date.now()}-1`,
                     optionOne: `Have the ability to ${aiPrompt.includes('superpower') ? 'read minds' : 'teleport anywhere instantly'}`,
                     optionTwo: `Be able to ${aiPrompt.includes('superpower') ? 'become invisible at will' : 'time travel but only to the past'}`,
-                    tags: selectedTags.length > 0 ? selectedTags : ['fantasy', 'superpowers'],
-                    category: selectedCategory || 'Fantasy',
-                    difficulty: selectedDifficulty
                 },
                 {
                     id: `ai-${Date.now()}-2`,
                     optionOne: `Always ${selectedDifficulty === 'easy' ? 'have perfect weather' : 'know what people are thinking about you'}`,
                     optionTwo: `Never ${selectedDifficulty === 'easy' ? 'have to sleep' : 'be able to forget embarrassing moments'}`,
-                    tags: selectedTags.length > 0 ? selectedTags : ['hypothetical', 'lifestyle'],
-                    category: selectedCategory || 'Lifestyle',
-                    difficulty: selectedDifficulty
                 }
             ];
 
@@ -205,19 +199,8 @@ export default function AIQuestionGenerator({ onQuestionsGenerated }: AIQuestion
                                 <div key={question.id} className="bg-gray-700/50 rounded-lg p-4 border border-gray-600">
                                     <div className="flex justify-between items-start mb-3">
                                         <div className="flex items-center space-x-2">
-                                            {question.category && (
-                                                <span className="px-2 py-1 bg-blue-600 text-white text-xs rounded-full">
-                                                    {question.category}
-                                                </span>
-                                            )}
-                                            {question.difficulty && (
-                                                <span className={`px-2 py-1 text-xs rounded-full ${question.difficulty === 'easy' ? 'bg-green-600 text-white' :
-                                                    question.difficulty === 'medium' ? 'bg-yellow-600 text-white' :
-                                                        'bg-red-600 text-white'
-                                                    }`}>
-                                                    {question.difficulty}
-                                                </span>
-                                            )}
+                                           
+                                           
                                         </div>
                                         <Button
                                             onClick={() => addGeneratedQuestion(question)}
@@ -240,18 +223,7 @@ export default function AIQuestionGenerator({ onQuestionsGenerated }: AIQuestion
                                         </div>
                                     </div>
 
-                                    {question.tags && question.tags.length > 0 && (
-                                        <div className="flex items-center space-x-2">
-                                            <Tag className="w-3 h-3 text-gray-400" />
-                                            <div className="flex flex-wrap gap-1">
-                                                {question.tags.map(tag => (
-                                                    <span key={tag} className="px-2 py-1 bg-gray-600 text-gray-300 text-xs rounded">
-                                                        {tag}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
+                                  
                                 </div>
                             ))}
                         </div>

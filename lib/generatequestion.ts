@@ -148,8 +148,5 @@ export let data: WouldYouRatherQuestion[] = sampleQuestions.map((e, i): WouldYou
         id: String(i + 1),
         optionOne: e.optionOne,
         optionTwo: e.optionTwo,
-        tags: e.tags,
-        category: e.category,
-        difficulty: e.difficulty
     }
 })

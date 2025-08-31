@@ -1,10 +1,8 @@
 export interface WouldYouRatherQuestion {
     id: string;
+    title?:string
     optionOne: string;
     optionTwo: string;
-    tags?: string[];
-    difficulty?: 'easy' | 'medium' | 'hard';
-    category?: string;
 }
 export interface userChoise {
     questionID: string[]
