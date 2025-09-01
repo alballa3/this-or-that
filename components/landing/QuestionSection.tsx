@@ -2,13 +2,9 @@ import { WouldYouRatherQuestion } from "../../types";
 import QuestionCard from "./QuestionCard";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
+import { QuestionSet } from "@/pages";
 
-interface QuestionSet {
-    id: string;
-    title: string;
-    questions: WouldYouRatherQuestion[];
-    createdAt: string;
-}
+
 
 interface QuestionSectionProps {
     title: string;
@@ -18,6 +14,7 @@ interface QuestionSectionProps {
     onPlay: (set: QuestionSet) => void;
     onViewAll?: () => void;
     sectionId?: string;
+    loading?: boolean;
 }
 
 export default function QuestionSection({ 
@@ -27,7 +24,8 @@ export default function QuestionSection({
     questionSets, 
     onPlay, 
     onViewAll,
-    sectionId 
+    sectionId,
+    loading = false
 }: QuestionSectionProps) {
     return (
         <section id={sectionId} className="mb-20 animate-fade-in">
@@ -59,7 +57,12 @@ export default function QuestionSection({
                 )}
             </div>
 
-            {questionSets.length === 0 ? (
+            {loading ? (
+                <div className="text-center py-16 bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm rounded-3xl border border-gray-700/50 animate-slide-up">
+                    <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500 mx-auto mb-4"></div>
+                    <p className="text-gray-300 text-lg">Loading your questions...</p>
+                </div>
+            ) : questionSets.length === 0 ? (
                 <div className="text-center py-16 bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm rounded-3xl border border-gray-700/50 animate-slide-up">
                     <div className="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-gray-600/20 to-gray-700/20 rounded-2xl mx-auto mb-6">
                         <span className="text-5xl">🤔</span>

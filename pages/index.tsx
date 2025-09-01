@@ -1,204 +1,160 @@
-import { Button } from "@/components/ui/button";
-import { data as rawData } from "@/lib/generatequestion";
-import { userChoise, WouldYouRatherQuestion } from "@/types";
-import { useEffect, useState } from "react";
-import { ChevronRight, RotateCcw, Sparkles, Plus, Bot } from "lucide-react";
+import { useState, useEffect } from "react";
+import { toast, Toaster } from "sonner";
+import HeroSection from "@/components/landing/HeroSection";
+import SearchSection from "@/components/landing/SearchSection";
+import QuestionSection from "@/components/landing/QuestionSection";
+import { WouldYouRatherQuestion } from "@/types";
+import FloatingActionButton from "@/components/landing/FloatingActionButton";
 import { useRouter } from "next/router";
 
-export default function Home() {
-  const router = useRouter();
-  const [questions, setQuestion] = useState<WouldYouRatherQuestion[]>();
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
-  const [selectedQuestion, setSelectedQuestion] = useState<userChoise>()
-  const [isCheck, setIsCheck] = useState(true)
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  const [showCompletion, setShowCompletion] = useState(false);
+export interface QuestionSet {
+    id: string;
+    title: string;
+    question: WouldYouRatherQuestion[];
+    createdAt: string;
+}
 
-  useEffect(() => {
-    setQuestion(rawData.sort(() => Math.random() - 0.5))
-  }, [])
+export default function LandingPage() {
+    const [questionSets, setQuestionSets] = useState<QuestionSet[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [searchTerm, setSearchTerm] = useState("");
+    const route = useRouter()
+    // Mock data - in real app, this would come from your backend
+    useEffect(() => {
+        // Simulate loading from API
+        const handleLoad = async () => {
+            setLoading(true);
+            const res = await fetch(`/api/main/view?search=${searchTerm}`);
+            const json = await res.json();
+            setQuestionSets(json);
+            setLoading(false);
+        };
+        handleLoad()
+    }, [searchTerm]);
+    console.log(questionSets)
+    const filteredSets = questionSets.filter(set => {
+        if (!searchTerm) return true;
+        return set.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            set.question.some(q =>
+                q.optionOne.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                q.optionTwo.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+    });
 
-  if (!questions) return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-    </div>
-  );
+    // Sort question sets for different sections
+    const mostPopularSets = [...questionSets]
+        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+        .slice(0, 3);
 
-  const handlenextQuestion = () => {
-    if ((questions.length - 1) <= currentQuestionIndex) {
-      setShowCompletion(true);
-      return;
-    }
-    setCurrentQuestionIndex((e) => e + 1)
-    setIsCheck(true)
-    setSelectedOption(null)
-  }
+    const latestCreatedSets = [...questionSets]
+        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+        .slice(0, 3);
 
-  const handleSelect = (question_answer: string) => {
-    let questionID = questions.find((e) => e.optionOne == question_answer || e.optionTwo == question_answer)?.id
-    if (!questionID) return;
+    const handlePlaySet = (set: QuestionSet) => {
+        // In real app, navigate to play mode with this set
+        toast.success(`Starting "${set.title}" game mode!`);
+        route.push(`/view/${set.id}`)
+    };
 
-    setSelectedQuestion((prev) => ({
-      questionAnswer: [...(prev?.questionAnswer || []), question_answer],
-      questionID: [...(prev?.questionID || []), questionID]
-    }))
-    setSelectedOption(question_answer)
-    setIsCheck(false)
-  }
-
-  const resetGame = () => {
-    setCurrentQuestionIndex(0)
-    setSelectedQuestion(undefined)
-    setIsCheck(true)
-    setSelectedOption(null)
-    setShowCompletion(false)
-  }
-
-  if (showCompletion) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center p-6">
-        <div className="max-w-md w-full text-center space-y-8">
-          <div className="animate-bounce">
-            <Sparkles className="w-16 h-16 text-blue-300 mx-auto mb-4" />
-          </div>
-          <h1 className="text-4xl font-bold text-white mb-4">Congratulations!</h1>
-          <p className="text-gray-300 text-lg mb-8">
-            You've completed all {questions.length} questions! 🎉
-          </p>
-          <div className="space-y-4">
-            <Button
-              onClick={resetGame}
-              className="bg-white text-black hover:bg-gray-100 px-8 py-3 text-lg font-semibold w-full"
-            >
-              <RotateCcw className="w-5 h-5 mr-2" />
-              Play Again
-            </Button>
-            <div className="flex space-x-3">
-              <Button
-                onClick={() => router.push('/create')}
-                variant="outline"
-                className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white flex-1"
-              >
-                <Plus className="w-4 h-4 mr-2" />
-                Create More
-              </Button>
-              <Button
-                onClick={() => router.push('/ai-generator')}
-                variant="outline"
-                className="border-blue-500 text-blue-300 hover:bg-blue-600 hover:text-white flex-1"
-              >
-                <Bot className="w-4 h-4 mr-2" />
-                Try AI Generator
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex flex-col">
-      {/* Header */}
-      <div className="text-center py-8 px-6">
-        <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent mb-4">
-          Would You Rather?
-        </h1>
-
-        {/* Navigation Buttons */}
-        <div className="flex justify-center space-x-4 mb-6">
-          <Button
-            onClick={() => router.push('/create')}
-            variant="outline"
-            className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
-          >
-            <Plus className="w-4 h-4 mr-2" />
-            Create Questions
-          </Button>
-          <Button
-            onClick={() => router.push('/ai-generator')}
-            variant="outline"
-            className="border-blue-500 text-blue-300 hover:bg-blue-600 hover:text-white"
-          >
-            <Bot className="w-4 h-4 mr-2" />
-            AI Generator
-          </Button>
-        </div>
-
-        <div className="flex items-center justify-center space-x-4 text-gray-400">
-          <span className="text-sm">Question {currentQuestionIndex + 1} of {questions.length}</span>
-          <div className="w-32 bg-gray-700 rounded-full h-2">
-            <div
-              className="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
-            ></div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="flex-1 flex items-center justify-center p-6">
-        <div className="max-w-4xl w-full space-y-8">
-          {/* Options */}
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Option 1 */}
-            <div
-              className={`group cursor-pointer transition-all duration-300 transform hover:scale-105 ${selectedOption === questions[currentQuestionIndex].optionOne
-                ? 'ring-4 ring-blue-500 bg-gradient-to-br from-blue-900/30 to-blue-700/30'
-                : 'hover:bg-gray-800/50'
-                }`}
-              onClick={() => handleSelect(questions[currentQuestionIndex].optionOne)}
-            >
-              <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-600 rounded-2xl p-8 h-full flex items-center justify-center text-center">
-                <div>
-                  <div className="text-blue-300 font-semibold text-sm mb-3">OPTION A</div>
-                  <p className="text-white text-xl font-medium leading-relaxed">
-                    {questions[currentQuestionIndex]?.optionOne}
-                  </p>
-                </div>
-              </div>
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 relative overflow-hidden">
+            {/* Background Elements */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
+                <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent"></div>
             </div>
 
-            {/* Option 2 */}
-            <div
-              className={`group cursor-pointer transition-all duration-300 transform hover:scale-105 ${selectedOption === questions[currentQuestionIndex].optionTwo
-                ? 'ring-4 ring-purple-500 bg-gradient-to-br from-purple-900/30 to-purple-700/30'
-                : 'hover:bg-gray-800/50'
-                }`}
-              onClick={() => handleSelect(questions[currentQuestionIndex].optionTwo)}
-            >
-              <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-600 rounded-2xl p-8 h-full flex items-center justify-center text-center">
-                <div>
-                  <div className="text-purple-300 font-semibold text-sm mb-3">OPTION B</div>
-                  <p className="text-white text-xl font-medium leading-relaxed">
-                    {questions[currentQuestionIndex]?.optionTwo}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+            <div className="relative z-10 max-w-7xl mx-auto px-6 py-8">
+                <Toaster
+                    position="top-right"
+                    toastOptions={{
+                        style: {
+                            background: 'rgba(31, 41, 55, 0.9)',
+                            color: 'white',
+                            border: '1px solid rgba(59, 130, 246, 0.3)',
+                            backdropFilter: 'blur(10px)',
+                        },
+                    }}
+                />
 
-          {/* Action Buttons */}
-          <div className="flex justify-center space-x-4">
-            <Button
-              onClick={handlenextQuestion}
-              disabled={isCheck}
-              className="bg-blue-600 text-white hover:bg-blue-700 disabled:bg-gray-400 disabled:text-gray-600 px-8 py-3 text-lg font-semibold disabled:opacity-50"
-            >
-              {currentQuestionIndex === questions.length - 1 ? 'Finish' : 'Next Question'}
-              <ChevronRight className="w-5 h-5 ml-2" />
-            </Button>
-            <Button
-              onClick={resetGame}
-              variant="outline"
-              className="border-gray-400 text-gray-300 hover:bg-gray-400 hover:text-black px-6 py-3 font-semibold"
-            >
-              <RotateCcw className="w-4 h-4 mr-2" />
-              Reset
-            </Button>
-          </div>
+                {/* Hero Section */}
+                <HeroSection />
+
+                {/* Search Section */}
+                <SearchSection
+                    searchTerm={searchTerm}
+                    onSearchChange={setSearchTerm}
+                />
+
+                {/* Search Results */}
+                {searchTerm && (
+                    <QuestionSection
+                        title="Search Results"
+                        subtitle={`Found ${filteredSets.length} question sets matching "${searchTerm}"`}
+                        icon="🔍"
+                        questionSets={filteredSets}
+                        onPlay={handlePlaySet}
+                    />
+                )}
+
+                {/* Most Popular Section */}
+                {/* {!searchTerm && (
+                    <QuestionSection
+                        sectionId="popular-section"
+                        title="Most Popular"
+                        subtitle="The community's favorite question sets that spark the best conversations"
+                        icon="🔥"
+                        questionSets={mostPopularSets}
+                        onPlay={handlePlaySet}
+                    />
+                )} */}
+
+                {/* Latest Created Section */}
+                {!searchTerm && (
+                    <QuestionSection
+                        title="Latest Created"
+                        subtitle="Fresh questions just added to our collection"
+                        icon="✨"
+                        questionSets={latestCreatedSets}
+                        onPlay={handlePlaySet}
+                        loading={loading}
+                    />
+                )}
+
+                {/* All Questions Section
+                {!searchTerm && (
+                    <QuestionSection
+                        title="All Question Sets"
+                        subtitle="Browse through our complete collection of thought-provoking dilemmas"
+                        icon="📚"
+                        questionSets={questionSets}
+                        onPlay={handlePlaySet}
+                    />
+                )} */}
+
+                {/* Footer */}
+                <footer className="mt-32 py-16 border-t border-gray-800/50">
+                    <div className="text-center">
+                        <div className="flex items-center justify-center mb-6">
+                            <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl backdrop-blur-sm border border-blue-500/30">
+                                <span className="text-3xl">🤔</span>
+                            </div>
+                        </div>
+                        <h3 className="text-3xl font-bold text-white mb-4">Ready to Create Your Own?</h3>
+                        <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+                            Join 0 users who doesnt know what this website even about.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                            <div className="text-sm text-gray-500">
+                                ©2025 Would You Rather. Made with mohammedpro ❤️ for curious minds.
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+
+            {/* Floating Action Button */}
+            <FloatingActionButton />
         </div>
-      </div>
-    </div>
-  );
+    );
 }

@@ -1,13 +1,9 @@
 import { Button } from "../ui/button";
 import { WouldYouRatherQuestion } from "../../types";
 import { Play, Clock, Sparkles } from "lucide-react";
+import { QuestionSet } from "@/pages";
 
-interface QuestionSet {
-    id: string;
-    title: string;
-    questions: WouldYouRatherQuestion[];
-    createdAt: string;
-}
+
 
 interface QuestionCardProps {
     questionSet: QuestionSet;
@@ -41,7 +37,7 @@ export default function QuestionCard({ questionSet, onPlay, index = 0 }: Questio
                             {new Date(questionSet.createdAt).toLocaleDateString()}
                         </span>
                         <span className="bg-gradient-to-r from-blue-500/20 to-blue-600/20 text-blue-300 px-3 py-1 rounded-full text-sm font-semibold border border-blue-500/30">
-                            {questionSet.questions.length} questions
+                            {questionSet.question.length} questions
                         </span>
                     </div>
                 </div>
@@ -53,7 +49,7 @@ export default function QuestionCard({ questionSet, onPlay, index = 0 }: Questio
                         Preview Questions
                     </h4>
                     <div className="space-y-3">
-                        {questionSet.questions.slice(0, 2).map((question, qIndex) => (
+                        {questionSet.question.slice(0, 2).map((question, qIndex) => (
                             <div key={question.id} className="bg-gray-700/30 backdrop-blur-sm rounded-xl p-4 border border-gray-600/30 group-hover:border-gray-500/50 transition-colors duration-300">
                                 <div className="text-sm text-gray-400 mb-2 font-medium">Question {qIndex + 1}</div>
                                 <div className="grid grid-cols-2 gap-3 text-xs">

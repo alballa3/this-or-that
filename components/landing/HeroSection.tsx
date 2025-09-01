@@ -58,25 +58,25 @@ export default function HeroSection() {
                         <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mb-4 mx-auto group-hover:rotate-12 transition-transform duration-300">
                             <TrendingUp className="w-8 h-8 text-white" />
                         </div>
-                        <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 mb-2">1,247</div>
+                        <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 mb-2">4</div>
                         <div className="text-gray-300 font-medium">Questions Created</div>
-                        <div className="text-sm text-gray-500 mt-1">+127 this week</div>
+                        <div className="text-sm text-gray-500 mt-1">0 this week</div>
                     </div>
-                    
+
                     <div className="group bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
                         <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl mb-4 mx-auto group-hover:rotate-12 transition-transform duration-300">
                             <Sparkles className="w-8 h-8 text-white" />
                         </div>
-                        <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600 mb-2">89</div>
+                        <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600 mb-2">5</div>
                         <div className="text-gray-300 font-medium">Question Sets</div>
                         <div className="text-sm text-gray-500 mt-1">Curated collections</div>
                     </div>
-                    
+
                     <div className="group bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50 hover:border-green-500/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
                         <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl mb-4 mx-auto group-hover:rotate-12 transition-transform duration-300">
                             <Users className="w-8 h-8 text-white" />
                         </div>
-                        <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600 mb-2">15.2K</div>
+                        <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600 mb-2">0k</div>
                         <div className="text-gray-300 font-medium">Games Played</div>
                         <div className="text-sm text-gray-500 mt-1">Active community</div>
                     </div>
