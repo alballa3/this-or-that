@@ -24,14 +24,13 @@ export default function LandingPage() {
         // Simulate loading from API
         const handleLoad = async () => {
             setLoading(true);
-            const res = await fetch(`/api/main/view?search=${searchTerm}`);
+            const res = await fetch(`/api/main/view?search=${searchTerm}&limit=10`);
             const json = await res.json();
             setQuestionSets(json);
             setLoading(false);
         };
         handleLoad()
     }, [searchTerm]);
-    console.log(questionSets)
     const filteredSets = questionSets.filter(set => {
         if (!searchTerm) return true;
         return set.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -40,11 +39,6 @@ export default function LandingPage() {
                 q.optionTwo.toLowerCase().includes(searchTerm.toLowerCase())
             );
     });
-
-    // Sort question sets for different sections
-    const mostPopularSets = [...questionSets]
-        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-        .slice(0, 3);
 
     const latestCreatedSets = [...questionSets]
         .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
@@ -97,17 +91,7 @@ export default function LandingPage() {
                     />
                 )}
 
-                {/* Most Popular Section */}
-                {/* {!searchTerm && (
-                    <QuestionSection
-                        sectionId="popular-section"
-                        title="Most Popular"
-                        subtitle="The community's favorite question sets that spark the best conversations"
-                        icon="🔥"
-                        questionSets={mostPopularSets}
-                        onPlay={handlePlaySet}
-                    />
-                )} */}
+            
 
                 {/* Latest Created Section */}
                 {!searchTerm && (
@@ -121,7 +105,7 @@ export default function LandingPage() {
                     />
                 )}
 
-                {/* All Questions Section
+                All Questions Section
                 {!searchTerm && (
                     <QuestionSection
                         title="All Question Sets"
@@ -130,7 +114,7 @@ export default function LandingPage() {
                         questionSets={questionSets}
                         onPlay={handlePlaySet}
                     />
-                )} */}
+                )}
 
                 {/* Footer */}
                 <footer className="mt-32 py-16 border-t border-gray-800/50">

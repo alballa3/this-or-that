@@ -2,6 +2,7 @@ import { Button } from "./ui/button";
 import { WouldYouRatherQuestion } from "../types";
 import { useState } from "react";
 import { Plus, Sparkles, RefreshCw, Tag, Wand2 } from "lucide-react";
+import { toast, Toaster } from "sonner";
 
 interface AIQuestionGeneratorProps {
     onQuestionsGenerated: (questions: WouldYouRatherQuestion[]) => void;
@@ -40,24 +41,28 @@ export default function AIQuestionGenerator({ onQuestionsGenerated }: AIQuestion
         setIsGenerating(true);
         try {
             // Simulate AI generation - in a real app, you'd call an AI API
-            await new Promise(resolve => setTimeout(resolve, 2000));
-
-            const mockGeneratedQuestions: WouldYouRatherQuestion[] = [
-                {
-                    id: `ai-${Date.now()}-1`,
-                    optionOne: `Have the ability to ${aiPrompt.includes('superpower') ? 'read minds' : 'teleport anywhere instantly'}`,
-                    optionTwo: `Be able to ${aiPrompt.includes('superpower') ? 'become invisible at will' : 'time travel but only to the past'}`,
+            const res = await fetch("/api/main/ai", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
                 },
-                {
-                    id: `ai-${Date.now()}-2`,
-                    optionOne: `Always ${selectedDifficulty === 'easy' ? 'have perfect weather' : 'know what people are thinking about you'}`,
-                    optionTwo: `Never ${selectedDifficulty === 'easy' ? 'have to sleep' : 'be able to forget embarrassing moments'}`,
+                body: JSON.stringify({
+                    prompt: `The User Promt:${aiPrompt} and the selected Tags ${selectedTags.join(" ")} and the Category about ${selectedCategory} and the Difficulty is ${selectedDifficulty} `,
+                })
+            }
+            );
+            if (!res.ok) throw new Error("Failed to generate questions");
+            const data = await res.json() as WouldYouRatherQuestion[];
+            console.log(data, typeof data)
+            setGeneratedQuestions(data.map((e) => {
+                return {
+                    ...e, id: `ai-${Date.now()}-${Math.random()}`
                 }
-            ];
+            }));
 
-            setGeneratedQuestions(mockGeneratedQuestions);
         } catch (error) {
-            alert("Failed to generate questions. Please try again.");
+            console.log(error)
+            toast.error("Failed to generate questions. Please try again.");
         } finally {
             setIsGenerating(false);
         }
@@ -75,6 +80,7 @@ export default function AIQuestionGenerator({ onQuestionsGenerated }: AIQuestion
 
     return (
         <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700">
+            <Toaster />
             <h2 className="text-2xl font-bold text-white mb-6 text-center flex items-center justify-center">
                 <Wand2 className="w-6 h-6 mr-3 text-gray-400" />
                 AI Question Generator
@@ -199,8 +205,8 @@ export default function AIQuestionGenerator({ onQuestionsGenerated }: AIQuestion
                                 <div key={question.id} className="bg-gray-700/50 rounded-lg p-4 border border-gray-600">
                                     <div className="flex justify-between items-start mb-3">
                                         <div className="flex items-center space-x-2">
-                                           
-                                           
+
+
                                         </div>
                                         <Button
                                             onClick={() => addGeneratedQuestion(question)}
@@ -223,7 +229,7 @@ export default function AIQuestionGenerator({ onQuestionsGenerated }: AIQuestion
                                         </div>
                                     </div>
 
-                                  
+
                                 </div>
                             ))}
                         </div>
