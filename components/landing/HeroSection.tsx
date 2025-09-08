@@ -1,10 +1,12 @@
 import { Button } from "../ui/button";
 import { Plus, Sparkles, TrendingUp, Users, Zap } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/router";
 
 export default function HeroSection() {
     const router = useRouter();
-
+    const t=useTranslations("index")
+    
     return (
         <div className="relative text-center mb-20">
             {/* Background Elements */}
@@ -18,16 +20,17 @@ export default function HeroSection() {
                 {/* Badge */}
                 <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full border border-blue-500/30 mb-8 animate-fade-in">
                     <Zap className="w-4 h-4 text-blue-400 mr-2" />
-                    <span className="text-blue-300 text-sm font-medium">The Ultimate Decision Game</span>
+                    <span className="text-blue-300 text-sm font-medium">{t("hero.Badge")}</span>
                 </div>
 
                 {/* Main Title */}
                 <div className="mb-8 animate-slide-up">
                     <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 mb-6 leading-tight">
-                        Would You Rather
+                        {t("hero.title")}
                     </h1>
                     <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
-                        Dive into thought-provoking dilemmas that spark conversations, challenge perspectives, and reveal what truly matters to you and your friends
+                        {t("hero.subtitle")}
+
                     </p>
                 </div>
 
@@ -39,7 +42,7 @@ export default function HeroSection() {
                         size="lg"
                     >
                         <Plus className="w-5 h-5 mr-2" />
-                        Create Questions
+                        {t("hero.button")}
                     </Button>
                     <Button
                         onClick={() => document.getElementById('popular-section')?.scrollIntoView({ behavior: 'smooth' })}
@@ -48,7 +51,7 @@ export default function HeroSection() {
                         size="lg"
                     >
                         <Sparkles className="w-5 h-5 mr-2" />
-                        Explore Questions
+                        {t("hero.button_2")}
                     </Button>
                 </div>
 
@@ -59,8 +62,8 @@ export default function HeroSection() {
                             <TrendingUp className="w-8 h-8 text-white" />
                         </div>
                         <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 mb-2">4</div>
-                        <div className="text-gray-300 font-medium">Questions Created</div>
-                        <div className="text-sm text-gray-500 mt-1">0 this week</div>
+                        <div className="text-gray-300 font-medium">{t("hero.stats.state_1_title")}</div>
+                        <div className="text-sm text-gray-500 mt-1">{t("hero.stats.state_1_result")}</div>
                     </div>
 
                     <div className="group bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
@@ -68,8 +71,8 @@ export default function HeroSection() {
                             <Sparkles className="w-8 h-8 text-white" />
                         </div>
                         <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600 mb-2">5</div>
-                        <div className="text-gray-300 font-medium">Question Sets</div>
-                        <div className="text-sm text-gray-500 mt-1">Curated collections</div>
+                        <div className="text-gray-300 font-medium">{t("hero.stats.state_2_title")}</div>
+                        <div className="text-sm text-gray-500 mt-1">{t("hero.stats.state_2_result")}</div>
                     </div>
 
                     <div className="group bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50 hover:border-green-500/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
@@ -77,8 +80,8 @@ export default function HeroSection() {
                             <Users className="w-8 h-8 text-white" />
                         </div>
                         <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600 mb-2">0k</div>
-                        <div className="text-gray-300 font-medium">Games Played</div>
-                        <div className="text-sm text-gray-500 mt-1">Active community</div>
+                        <div className="text-gray-300 font-medium">{t("hero.stats.state_3_title")}</div>
+                        <div className="text-sm text-gray-500 mt-1">{t("hero.stats.state_3_result")}</div>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,8 @@ import QuestionSection from "@/components/landing/QuestionSection";
 import { WouldYouRatherQuestion } from "@/types";
 import FloatingActionButton from "@/components/landing/FloatingActionButton";
 import { useRouter } from "next/router";
-
+import { GetStaticPropsContext } from 'next';
+import { useTranslations } from "next-intl";
 export interface QuestionSet {
     id: string;
     title: string;
@@ -19,9 +20,8 @@ export default function LandingPage() {
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState("");
     const route = useRouter()
-    // Mock data - in real app, this would come from your backend
+    const t = useTranslations("index.question")
     useEffect(() => {
-        // Simulate loading from API
         const handleLoad = async () => {
             setLoading(true);
             const res = await fetch(`/api/main/view?search=${searchTerm}&limit=10`);
@@ -83,21 +83,21 @@ export default function LandingPage() {
                 {/* Search Results */}
                 {searchTerm && (
                     <QuestionSection
-                        title="Search Results"
-                        subtitle={`Found ${filteredSets.length} question sets matching "${searchTerm}"`}
+                        title={t("search1.title")}
+                        subtitle={t("search1.subtitle", { length: filteredSets.length, searchTerm: searchTerm })}
                         icon="🔍"
                         questionSets={filteredSets}
                         onPlay={handlePlaySet}
                     />
                 )}
 
-            
+
 
                 {/* Latest Created Section */}
                 {!searchTerm && (
                     <QuestionSection
-                        title="Latest Created"
-                        subtitle="Fresh questions just added to our collection"
+                        title={t("search2.title")}
+                        subtitle={t("search2.subtitle")}
                         icon="✨"
                         questionSets={latestCreatedSets}
                         onPlay={handlePlaySet}
@@ -105,11 +105,11 @@ export default function LandingPage() {
                     />
                 )}
 
-                All Questions Section
+                {/* All Questions Section */}
                 {!searchTerm && (
                     <QuestionSection
-                        title="All Question Sets"
-                        subtitle="Browse through our complete collection of thought-provoking dilemmas"
+                        title={t("search3.title")}
+                        subtitle={t("search3.subtitle")}
                         icon="📚"
                         questionSets={questionSets}
                         onPlay={handlePlaySet}
@@ -124,13 +124,13 @@ export default function LandingPage() {
                                 <span className="text-3xl">🤔</span>
                             </div>
                         </div>
-                        <h3 className="text-3xl font-bold text-white mb-4">Ready to Create Your Own?</h3>
+                        <h3 className="text-3xl font-bold text-white mb-4">{t("title")}</h3>
                         <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-                            Join 0 users who doesnt know what this website even about.
+                            {t("subtitle")}
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                             <div className="text-sm text-gray-500">
-                                ©2025 Would You Rather. Made with mohammedpro ❤️ for curious minds.
+                                {t("copyright")}
                             </div>
                         </div>
                     </div>
@@ -141,4 +141,11 @@ export default function LandingPage() {
             <FloatingActionButton />
         </div>
     );
+}
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
+    return {
+        props: {
+            messages: (await import(`../messages/${locale}.json`)).default
+        }
+    };
 }

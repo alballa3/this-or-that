@@ -3,6 +3,7 @@ import QuestionCard from "./QuestionCard";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import { QuestionSet } from "@/pages";
+import { useTranslations } from "next-intl";
 
 
 
@@ -27,6 +28,8 @@ export default function QuestionSection({
     sectionId,
     loading = false
 }: QuestionSectionProps) {
+
+    const t =useTranslations("index.feed")
     return (
         <section id={sectionId} className="mb-20 animate-fade-in">
             {/* Section Header */}
@@ -51,7 +54,7 @@ export default function QuestionSection({
                         variant="outline"
                         className="border-2 border-gray-500/50 text-gray-400 hover:bg-gray-500 hover:text-white rounded-xl backdrop-blur-sm bg-gray-500/10 transform hover:scale-105 transition-all duration-300 animate-slide-up delay-200"
                     >
-                        View All
+                        {t("view")}
                         <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                 )}

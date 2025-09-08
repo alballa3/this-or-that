@@ -2,6 +2,7 @@ import { Button } from "../ui/button";
 import { WouldYouRatherQuestion } from "../../types";
 import { Play, Clock, Sparkles } from "lucide-react";
 import { QuestionSet } from "@/pages";
+import { useTranslations } from "next-intl";
 
 
 
@@ -12,14 +13,15 @@ interface QuestionCardProps {
 }
 
 export default function QuestionCard({ questionSet, onPlay, index = 0 }: QuestionCardProps) {
+    const t = useTranslations("index.feed")
     return (
-        <div 
+        <div
             className="group bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-sm rounded-3xl border border-gray-700/50 overflow-hidden hover:border-blue-500/50 transition-all duration-500 p-6 transform hover:scale-105 hover:-translate-y-2 animate-slide-up"
             style={{ animationDelay: `${index * 100}ms` }}
         >
             {/* Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            
+
             <div className="relative z-10">
                 {/* Header */}
                 <div className="mb-6">
@@ -37,7 +39,7 @@ export default function QuestionCard({ questionSet, onPlay, index = 0 }: Questio
                             {new Date(questionSet.createdAt).toLocaleDateString()}
                         </span>
                         <span className="bg-gradient-to-r from-blue-500/20 to-blue-600/20 text-blue-300 px-3 py-1 rounded-full text-sm font-semibold border border-blue-500/30">
-                            {questionSet.question.length} questions
+                            {questionSet.question.length} {t("questions")}
                         </span>
                     </div>
                 </div>
@@ -46,24 +48,24 @@ export default function QuestionCard({ questionSet, onPlay, index = 0 }: Questio
                 <div className="mb-6">
                     <h4 className="text-gray-300 font-semibold mb-4 flex items-center">
                         <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
-                        Preview Questions
+                        {t("preview")}
                     </h4>
                     <div className="space-y-3">
                         {questionSet.question.slice(0, 2).map((question, qIndex) => (
                             <div key={question.id} className="bg-gray-700/30 backdrop-blur-sm rounded-xl p-4 border border-gray-600/30 group-hover:border-gray-500/50 transition-colors duration-300">
-                                <div className="text-sm text-gray-400 mb-2 font-medium">Question {qIndex + 1}</div>
+                                <div className="text-sm text-gray-400 mb-2 font-medium">{t("questions")} {qIndex + 1}</div>
                                 <div className="grid grid-cols-2 gap-3 text-xs">
                                     <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/10 border border-blue-500/30 rounded-lg p-3 hover:from-blue-500/20 hover:to-blue-600/20 transition-all duration-300">
                                         <div className="text-blue-300 font-bold mb-2 flex items-center">
                                             <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></span>
-                                            Option A
+                                            {t("option_1")}
                                         </div>
                                         <p className="text-white text-sm leading-relaxed line-clamp-2">{question.optionOne}</p>
                                     </div>
                                     <div className="bg-gradient-to-br from-purple-500/10 to-purple-600/10 border border-purple-500/30 rounded-lg p-3 hover:from-purple-500/20 hover:to-purple-600/20 transition-all duration-300">
                                         <div className="text-purple-300 font-bold mb-2 flex items-center">
                                             <span className="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2"></span>
-                                            Option B
+                                            {t("option_2")}
                                         </div>
                                         <p className="text-white text-sm leading-relaxed line-clamp-2">{question.optionTwo}</p>
                                     </div>
@@ -80,7 +82,7 @@ export default function QuestionCard({ questionSet, onPlay, index = 0 }: Questio
                         className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold rounded-xl shadow-lg shadow-green-500/25 transform hover:scale-105 transition-all duration-300"
                     >
                         <Play className="w-4 h-4 mr-2" />
-                        Play Now
+                        {t("play")}
                     </Button>
                 </div>
             </div>

@@ -1,4 +1,5 @@
 import { Search, Sparkles } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface SearchSectionProps {
     searchTerm: string;
@@ -6,6 +7,7 @@ interface SearchSectionProps {
 }
 
 export default function SearchSection({ searchTerm, onSearchChange }: SearchSectionProps) {
+    const t = useTranslations('index.search')
     return (
         <div className="relative bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-sm rounded-3xl p-10 border border-gray-700/50 mb-20 overflow-hidden animate-slide-up">
             {/* Background Elements */}
@@ -22,13 +24,14 @@ export default function SearchSection({ searchTerm, onSearchChange }: SearchSect
                         </div>
                     </div>
                     <h2 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300 mb-3">
-                        Find Your Perfect Questions
+                        {t('title')}
+
                     </h2>
                     <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                        Search through our collection of thought-provoking dilemmas and discover questions that spark amazing conversations
+                        {t("subtitle")}
                     </p>
                 </div>
-                
+
                 <div className="max-w-3xl mx-auto">
                     <div className="relative group">
                         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur-xl group-focus-within:blur-2xl transition-all duration-300"></div>
@@ -36,7 +39,7 @@ export default function SearchSection({ searchTerm, onSearchChange }: SearchSect
                             <Search className="absolute left-6 top-1/2 transform -translate-y-1/2 text-gray-400 w-6 h-6 group-focus-within:text-blue-400 transition-colors duration-300" />
                             <input
                                 type="text"
-                                placeholder="Search for questions, topics, or themes..."
+                                placeholder={t("search")}
                                 value={searchTerm}
                                 onChange={(e) => onSearchChange(e.target.value)}
                                 className="w-full pl-16 pr-8 py-6 bg-gray-800/80 backdrop-blur-sm border-2 border-gray-600/50 rounded-2xl text-white placeholder-gray-400 focus:border-blue-500/50 focus:outline-none text-lg font-medium shadow-2xl transition-all duration-300 focus:shadow-blue-500/25"

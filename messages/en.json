@@ -1,0 +1,157 @@
+{
+    "index": {
+        "hero": {
+            "Badge": "The Ultimate Decision Game",
+            "title": "Would You Rather",
+            "subtitle": "Dive into thought-provoking dilemmas that spark conversations, challenge perspectives, and reveal what truly matters to you and your friends",
+            "button": "create Question",
+            "button_2": "Explore Questions",
+            "stats": {
+                "state_1_title": "Questions Created",
+                "state_1_result": "0 this week",
+                "state_2_title": "Questions Set",
+                "state_2_result": "Curated collections",
+                "state_3_title": "Games Played",
+                "state_3_result": "Active community"
+            }
+        },
+        "search": {
+            "title": "Find Your Perfect Questions",
+            "subtitle": "Search through our collection of thought-provoking dilemmas and discover questions that spark amazing conversations",
+            "search": "Search for questions, topics, or themes..."
+        },
+        "feed": {
+            "questions": "Questions",
+            "preview": "Preview Questions",
+            "option_1": "Option A",
+            "option_2": "Option B",
+            "play": "Play Now",
+            "view": "View All",
+            "create": "Create new Question",
+            "search": "Search for questions, topics, or themes..."
+        },
+        "question": {
+            "title": "Ready to Create Your Own?",
+            "subtitle": "Join 0 users who doesnt know what this website even about.",
+            "copyright": "©2025 Would You Rather. Made with mohammedpro ❤️ for curious minds.",
+            "search1": {
+                "title": "Search Results",
+                "subtitle": "Found {length} question sets matching {searchTerm}"
+            },
+            "search2": {
+                "title": "Latest Created",
+                "subtitle": "Fresh questions just added to our collection"
+            },
+            "search3": {
+                "title": "All Question Sets",
+                "subtitle": "Browse through our complete collection of thought-provoking dilemmas"
+            }
+        }
+    },
+    "create": {
+        "title": "Create Questions",
+        "subtitle": "Design your own \"Would You Rather\" questions ✨",
+        "titleInput": {
+            "label": "📝 Question Set Title",
+            "placeholder": "e.g., Would You Rather for Friends",
+            "charactersLabel": "characters"
+        },
+        "tabs": {
+            "manual": "Manual Creation",
+            "ai": "AI Generator"
+        },
+        "manual": {
+            "title": "Create New Question",
+            "optionA": "🪽 Option A",
+            "optionB": "👻 Option B",
+            "placeholderA": "Enter the first option...",
+            "placeholderB": "Enter the second option...",
+            "addButton": "Add Question"
+        },
+        "preview": {
+            "title": "Preview Mode - See how your questions look in the game",
+            "questionCounter": "Question {current} of {total}",
+            "wouldYouRather": "Would you rather...",
+            "optionALabel": "🪽 OPTION A",
+            "optionBLabel": "👻 OPTION B",
+            "previousButton": "Previous",
+            "nextButton": "Next",
+            "backButton": "Back to Editor"
+        },
+        "questionsList": {
+            "title": "Your Questions ({count})",
+            "previewButton": "Preview",
+            "saveButton": "Save All",
+            "questionLabel": "Question {number}",
+            "optionALabel": "🪽 Option A",
+            "optionBLabel": "👻 Option B"
+        },
+        "emptyState": {
+            "emoji": "🤔",
+            "message": "No questions created yet. Start by adding your first question above!"
+        },
+        "messages": {
+            "fillBothOptions": "Please fill in both options!",
+            "noQuestionsToSave": "No questions to save!",
+            "errorOccurred": "ERROR JUST HAPPENED"
+        },
+        "aiGenerator": {
+            "title": "AI Question Generator",
+            "promptLabel": "✨ Describe what kind of questions you want",
+            "promptPlaceholder": "e.g., 'Create funny questions about food choices' or 'Generate serious moral dilemmas about technology'",
+            "categoryLabel": "📂 Category",
+            "categoryPlaceholder": "Select a category (optional)",
+            "difficultyLabel": "🎯 Difficulty Level",
+            "tagsLabel": "🏷️ Tags (optional)",
+            "selectedTags": "Selected: {tags}",
+            "generateButton": "Generate Questions",
+            "generatingButton": "Generating...",
+            "generatedTitle": "Generated Questions",
+            "addAllButton": "Add All",
+            "addButton": "Add",
+            "optionALabel": "🪽 Option A",
+            "optionBLabel": "👻 Option B",
+            "difficulties": {
+                "easy": "Easy",
+                "medium": "Medium",
+                "hard": "Hard"
+            },
+            "categories": {
+                "general": "General",
+                "entertainment": "Entertainment",
+                "food": "Food & Drink",
+                "technology": "Technology",
+                "travel": "Travel",
+                "relationships": "Relationships",
+                "career": "Career",
+                "lifestyle": "Lifestyle",
+                "adventure": "Adventure",
+                "fantasy": "Fantasy",
+                "science": "Science"
+            },
+            "tags": {
+                "funny": "funny",
+                "serious": "serious",
+                "hypothetical": "hypothetical",
+                "moral": "moral",
+                "creative": "creative",
+                "adventure": "adventure",
+                "food": "food",
+                "technology": "technology",
+                "relationships": "relationships",
+                "career": "career",
+                "superpowers": "superpowers",
+                "travel": "travel",
+                "lifestyle": "lifestyle",
+                "entertainment": "entertainment",
+                "sports": "sports",
+                "animals": "animals",
+                "science": "science",
+                "fantasy": "fantasy"
+            },
+            "messages": {
+                "generateError": "Failed to generate questions. Please try again."
+            }
+        }
+    }
+}

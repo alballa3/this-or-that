@@ -1,10 +1,11 @@
 import { Button } from "../ui/button";
 import { Plus } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/router";
 
 export default function FloatingActionButton() {
     const router = useRouter();
-
+    const t=useTranslations("index.feed")
     return (
         <div className="fixed bottom-8 right-8 z-50 animate-bounce-in">
             <Button
@@ -17,7 +18,8 @@ export default function FloatingActionButton() {
             
             {/* Tooltip */}
             <div className="absolute bottom-20 right-0 bg-gray-800 text-white px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                Create New Questions
+                {t("create")}
+
                 <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
             </div>
 
