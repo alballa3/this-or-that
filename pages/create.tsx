@@ -12,7 +12,7 @@ import { GetStaticPropsContext } from 'next';
 export default function Create() {
     const router = useRouter();
     const t = useTranslations("create");
-    const [title, setTitle] = useState("Would You Rather");
+    const [title, setTitle] = useState("");
     const [optionOne, setOptionOne] = useState("");
     const [optionTwo, setOptionTwo] = useState("");
     const [createdQuestions, setCreatedQuestions] = useState<WouldYouRatherQuestion[]>([]);
@@ -51,7 +51,10 @@ export default function Create() {
             toast.error(t("messages.noQuestionsToSave"));
             return;
         }
-
+        if (title.length == 0) {
+            toast.error(t("messages.noTitle"));
+            return;
+        }
         // Save to localStorage for demo purposes with title
         const questionSet = {
             title: title,

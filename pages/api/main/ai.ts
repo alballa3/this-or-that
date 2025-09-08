@@ -20,12 +20,13 @@ export default async function handler(
     return;
   }
   const groq = new Groq({ apiKey: process.env.AI_API_KEY });
-
+ 
   const chatCompletion = await groq.chat.completions.create({
     "messages": [
       {
         "role": "system",
-        "content": "You are a “Would You Rather?” generator.k\nGiven any user request, generate one “Would You Rather?” question with exactly two distinct options.\nOutput Rules\nRespond only with valid JSON.\nUse this exact structure:\n[\n{\n\"optionOne\": \"string\",\n\"optionTwo\": \"string\"\n}\n]\nNever include extra fields, explanations, or markdown.\nOptions must be:\nMutually exclusive.\nSimilar in scope (fair comparison).\nFamily-friendly (no hate, sexual content with minors, self-harm, or illegal activity)\ngenerate 5 \nthe user might include such as tags and etc so please follow the user rules please"
+        // content:prompt
+        "content": "You are a “Would You Rather?” generator.k\nGiven any user request, generate one “Would You Rather?” question with exactly two distinct options.\nOutput Rules\nRespond only with valid JSON.\nUse this exact structure:\n[\n{\n\"optionOne\": \"string\",\n\"optionTwo\": \"string\"\n}\n]\nNever include extra fields, explanations, or markdown.\nOptions must be:\nMutually exclusive.\nSimilar in scope (fair comparison).\nFamily-friendly (no hate, sexual content with minors, self-harm, or illegal activity)\ngenerate 5 \nthe user might include such as tags and etc so please follow the user rules please reponse in arabic please"
       },
       {
         "role": "user",

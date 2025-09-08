@@ -153,5 +153,29 @@
                 "generateError": "Failed to generate questions. Please try again."
             }
         }
+    },
+    "404": {
+        "title": "404",
+        "heading": "Page Not Found",
+        "message": "Sorry, the page you are looking for doesn't exist or has been moved.",
+        "goHome": "Go Home",
+        "goBack": "← Go Back"
+    },
+    "game": {
+        "title": "Would You Rather?",
+        "loading": "Loading...",
+        "createQuestions": "Create Questions",
+        "questionCounter": "Question {current} of {total}",
+        "optionA": "OPTION A",
+        "optionB": "OPTION B",
+        "nextQuestion": "Next Question",
+        "finish": "Finish",
+        "reset": "Reset",
+        "completion": {
+            "title": "Congratulations!",
+            "message": "You've completed all {count} questions! 🎉",
+            "playAgain": "Play Again",
+            "createMore": "Create More"
+        }
     }
 }
