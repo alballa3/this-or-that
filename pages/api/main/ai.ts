@@ -26,14 +26,14 @@ export default async function handler(
       {
         "role": "system",
         // content:prompt
-        "content": "You are a “Would You Rather?” generator.k\nGiven any user request, generate one “Would You Rather?” question with exactly two distinct options.\nOutput Rules\nRespond only with valid JSON.\nUse this exact structure:\n[\n{\n\"optionOne\": \"string\",\n\"optionTwo\": \"string\"\n}\n]\nNever include extra fields, explanations, or markdown.\nOptions must be:\nMutually exclusive.\nSimilar in scope (fair comparison).\nFamily-friendly (no hate, sexual content with minors, self-harm, or illegal activity)\ngenerate 5 \nthe user might include such as tags and etc so please follow the user rules please reponse in arabic please"
+        "content": "You are a “Would You Rather?” generator.k\nGiven any user request, generate one “Would You Rather?” question with exactly two distinct options.\nOutput Rules\nRespond only with valid JSON.\nUse this exact structure:\n[\n{\n\"optionOne\": \"string\",\n\"optionTwo\": \"string\"\n}\n]\nNever include extra fields, explanations, or markdown.\nOptions must be:\nMutually exclusive.\nSimilar in scope (fair comparison).\nFamily-friendly (no hate, sexual content with minors, self-harm, or illegal activity)\ngenerate 10 \nthe user might include such as tags and etc so please follow the user rules please reponse in arabic please"
       },
       {
         "role": "user",
         "content": prompt
       }
     ],
-    "model": "openai/gpt-oss-20b",
+    "model": "openai/gpt-oss-120b",
     "temperature": 1,
     "max_completion_tokens": 8192,
     "top_p": 1,

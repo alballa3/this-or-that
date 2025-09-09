@@ -18,6 +18,7 @@ export default function Create() {
     const [createdQuestions, setCreatedQuestions] = useState<WouldYouRatherQuestion[]>([]);
     const [showPreview, setShowPreview] = useState(false);
     const [previewIndex, setPreviewIndex] = useState(0);
+    const [save, setSave] = useState(false)
 
     const handleAIQuestionsGenerated = (questions: WouldYouRatherQuestion[]) => {
         setCreatedQuestions(prev => [...prev, ...questions]);
@@ -60,6 +61,7 @@ export default function Create() {
             title: title,
             questions: createdQuestions,
         };
+        setSave(true)
         console.log(questionSet)
         const res = await fetch("/api/main/create", {
             method: "POST",
@@ -70,9 +72,11 @@ export default function Create() {
         })
         const data = await res.json();
         console.log(data)
+        setSave(false)
         if (!res.ok) {
             toast.error(data.message || t("messages.errorOccurred"))
             return;
+
         }
         router.push('/')
         console.log('Saved question set:', questionSet);
@@ -283,6 +287,7 @@ export default function Create() {
                                 </Button>
                                 <Button
                                     onClick={handleSaveQuestions}
+                                    disabled={save}
                                     className="bg-blue-600 hover:bg-blue-700 text-white"
                                 >
                                     <Save className="w-4 h-4 mr-2" />

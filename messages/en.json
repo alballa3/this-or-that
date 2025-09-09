@@ -93,6 +93,7 @@
         "messages": {
             "fillBothOptions": "Please fill in both options!",
             "noQuestionsToSave": "No questions to save!",
+            "noTitle": "Please enter a title for your question set!",
             "errorOccurred": "ERROR JUST HAPPENED"
         },
         "aiGenerator": {
