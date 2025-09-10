@@ -1,0 +1,258 @@
+[
+    {
+        "id": "cmfchl3je0001un64z0tzrhzp",
+        "optionOne": "فقد شورتك في منتصف حفل عيد ميلادك",
+        "optionTwo": "تسقط في حوض ماء أثناء عرضك في المدرسة",
+        "wouldYouRatherMainId": "cmfchl3je0000un6498pmchls",
+        "createdAt": "2025-09-09 11:47:56.832",
+        "updatedAt": "2025-09-09 11:47:56.832"
+    },
+    {
+        "id": "cmfchl3je0002un64v88o8jyu",
+        "optionOne": "تتساقط أمتعتك في المدرسة وتضطر إلى التوقف للتعويض",
+        "optionTwo": "تُخطئ في اسم أحد الزملاء أثناء تقديم نفسك أمام الجميع",
+        "wouldYouRatherMainId": "cmfchl3je0000un6498pmchls",
+        "createdAt": "2025-09-09 11:47:56.832",
+        "updatedAt": "2025-09-09 11:47:56.832"
+    },
+    {
+        "id": "cmfchl3je0003un644hunl9jq",
+        "optionOne": "تُرسل رسالة نصية غير مقصودة مع صورة طريفة إلى قائمة بريدك الكامل بدلاً من شريكك",
+        "optionTwo": "يُخطئ أحد الزملاء في إرسال بريد إلكتروني خاطئ يحتوي على نص مضحك في المدرسة",
+        "wouldYouRatherMainId": "cmfchl3je0000un6498pmchls",
+        "createdAt": "2025-09-09 11:47:56.832",
+        "updatedAt": "2025-09-09 11:47:56.832"
+    },
+    {
+        "id": "cmfchl3je0004un64xtfs5x13",
+        "optionOne": "تُسقط كؤوسك وتسكب المشروب على طاولة الصف أثناء عرضك",
+        "optionTwo": "فقد قبعك وتغلق على رأسك خلال عرضك",
+        "wouldYouRatherMainId": "cmfchl3je0000un6498pmchls",
+        "createdAt": "2025-09-09 11:47:56.832",
+        "updatedAt": "2025-09-09 11:47:56.832"
+    },
+    {
+        "id": "cmfchl3je0005un64uhfznr5s",
+        "optionOne": "يتم تسجيل مقطع صوتي لك وتُشاهد على التلفزيون أثناء الامتحان",
+        "optionTwo": "يتم نشر مقطع فيديو لك تتكلم به أمام الجميع في المدرسة على الإنترنت",
+        "wouldYouRatherMainId": "cmfchl3je0000un6498pmchls",
+        "createdAt": "2025-09-09 11:47:56.832",
+        "updatedAt": "2025-09-09 11:47:56.832"
+    },
+    {
+        "id": "cmfchl3je0006un64h38m96kv",
+        "optionOne": "إرسال رسالة نصية خاطئة إلى رئيسك بدلاً من صديقك المفضل",
+        "optionTwo": "التنفس بصوت عالٍ أثناء محادثة رسمية في مكتبة",
+        "wouldYouRatherMainId": "cmfchl3je0000un6498pmchls",
+        "createdAt": "2025-09-09 11:47:56.832",
+        "updatedAt": "2025-09-09 11:47:56.832"
+    },
+    {
+        "id": "cmfchl3je0007un64xx6fxyu9",
+        "optionOne": "التعثر عند خطوتك في حفلة رسمية وتسقط عصيتك",
+        "optionTwo": "تساقط وجبة الغداء في حفل رسمي أمام الجميع",
+        "wouldYouRatherMainId": "cmfchl3je0000un6498pmchls",
+        "createdAt": "2025-09-09 11:47:56.832",
+        "updatedAt": "2025-09-09 11:47:56.832"
+    },
+    {
+        "id": "cmfchl3je0008un642tq38ezu",
+        "optionOne": "الخطأ في إظهار صورة شخصية غبية في اجتماع عمل",
+        "optionTwo": "التنفس بصوت عالٍ أثناء تقديم عرض تقديمي مهم",
+        "wouldYouRatherMainId": "cmfchl3je0000un6498pmchls",
+        "createdAt": "2025-09-09 11:47:56.832",
+        "updatedAt": "2025-09-09 11:47:56.832"
+    },
+    {
+        "id": "cmfchl3je0009un640hujs9hc",
+        "optionOne": "التحدث بصوت عالٍ عن شيء خاطئ في اجتماع عمل",
+        "optionTwo": "التحدث بصوت منخفض جدًا وتغفل عن إظهار وجهك أمام الزملاء",
+        "wouldYouRatherMainId": "cmfchl3je0000un6498pmchls",
+        "createdAt": "2025-09-09 11:47:56.832",
+        "updatedAt": "2025-09-09 11:47:56.832"
+    },
+    {
+        "id": "cmfchl3jf000aun64sdth6mm4",
+        "optionOne": "التعليق على صورة غبية على وسائل التواصل الاجتماعي بمناسبة غير مناسبة",
+        "optionTwo": "نشر صورة غبية على وسائل التواصل الاجتماعي في يوم عمل",
+        "wouldYouRatherMainId": "cmfchl3je0000un6498pmchls",
+        "createdAt": "2025-09-09 11:47:56.832",
+        "updatedAt": "2025-09-09 11:47:56.832"
+    },
+    {
+        "id": "cmfchsrao000cun643y9g9gmr",
+        "optionOne": "مسلسل The Flash",
+        "optionTwo": "مسلسل Arrow",
+        "wouldYouRatherMainId": "cmfchsrao000bun64ju2pqmxa",
+        "createdAt": "2025-09-09 11:53:50.678",
+        "updatedAt": "2025-09-09 11:53:50.678"
+    },
+    {
+        "id": "cmfchsrao000dun64cdailfj5",
+        "optionOne": "مسلسل Doctor Strange",
+        "optionTwo": "مسلسل The Amazing Spider-Man",
+        "wouldYouRatherMainId": "cmfchsrao000bun64ju2pqmxa",
+        "createdAt": "2025-09-09 11:53:50.678",
+        "updatedAt": "2025-09-09 11:53:50.678"
+    },
+    {
+        "id": "cmfchsrao000eun64jx912d79",
+        "optionOne": "مسلسل X-Men: Evolution",
+        "optionTwo": "مسلسل The Boys",
+        "wouldYouRatherMainId": "cmfchsrao000bun64ju2pqmxa",
+        "createdAt": "2025-09-09 11:53:50.678",
+        "updatedAt": "2025-09-09 11:53:50.678"
+    },
+    {
+        "id": "cmfchsrao000fun64kp26t59z",
+        "optionOne": "مسلسل Agents of S.H.I.E.L.D.",
+        "optionTwo": "مسلسل Daredevil",
+        "wouldYouRatherMainId": "cmfchsrao000bun64ju2pqmxa",
+        "createdAt": "2025-09-09 11:53:50.678",
+        "updatedAt": "2025-09-09 11:53:50.678"
+    },
+    {
+        "id": "cmfchsrao000gun64xzsajnx2",
+        "optionOne": "مسلسل The Umbrella Academy",
+        "optionTwo": "مسلسل Legends of Tomorrow",
+        "wouldYouRatherMainId": "cmfchsrao000bun64ju2pqmxa",
+        "createdAt": "2025-09-09 11:53:50.678",
+        "updatedAt": "2025-09-09 11:53:50.678"
+    },
+    {
+        "id": "cmfchsrao000hun64it4nb4t6",
+        "optionOne": "مشاهدة مسلسل 'Sherlock'",
+        "optionTwo": "مشاهدة مسلسل 'Fleabag'",
+        "wouldYouRatherMainId": "cmfchsrao000bun64ju2pqmxa",
+        "createdAt": "2025-09-09 11:53:50.678",
+        "updatedAt": "2025-09-09 11:53:50.678"
+    },
+    {
+        "id": "cmfchsrao000iun641y5ts20h",
+        "optionOne": "مشاهدة مسلسل 'Game of Thrones'",
+        "optionTwo": "مشاهدة مسلسل 'Breaking Bad'",
+        "wouldYouRatherMainId": "cmfchsrao000bun64ju2pqmxa",
+        "createdAt": "2025-09-09 11:53:50.678",
+        "updatedAt": "2025-09-09 11:53:50.678"
+    },
+    {
+        "id": "cmfchsrao000jun641rupviyp",
+        "optionOne": "مشاهدة مسلسل 'The Office'",
+        "optionTwo": "مشاهدة مسلسل 'Friends'",
+        "wouldYouRatherMainId": "cmfchsrao000bun64ju2pqmxa",
+        "createdAt": "2025-09-09 11:53:50.678",
+        "updatedAt": "2025-09-09 11:53:50.678"
+    },
+    {
+        "id": "cmfchsrao000kun64oba2ur0f",
+        "optionOne": "مشاهدة مسلسل 'Dark'",
+        "optionTwo": "مشاهدة مسلسل 'Westworld'",
+        "wouldYouRatherMainId": "cmfchsrao000bun64ju2pqmxa",
+        "createdAt": "2025-09-09 11:53:50.678",
+        "updatedAt": "2025-09-09 11:53:50.678"
+    },
+    {
+        "id": "cmfchsrao000lun64tbjfyth5",
+        "optionOne": "مشاهدة مسلسل 'Peaky Blinders'",
+        "optionTwo": "مشاهدة مسلسل 'Narcos'",
+        "wouldYouRatherMainId": "cmfchsrao000bun64ju2pqmxa",
+        "createdAt": "2025-09-09 11:53:50.678",
+        "updatedAt": "2025-09-09 11:53:50.678"
+    },
+    {
+        "id": "cmfchu6td000yun648j177mdv",
+        "optionOne": "أكلة الفلافل في المخبز الساخن",
+        "optionTwo": "أكلة الكشري في مطعم فخم",
+        "wouldYouRatherMainId": "cmfchu6td000xun64c4a8niji",
+        "createdAt": "2025-09-09 11:55:00.997",
+        "updatedAt": "2025-09-09 11:55:00.997"
+    },
+    {
+        "id": "cmfchu6td000zun64mo1c3u63",
+        "optionOne": "بيتزا مارغريتا",
+        "optionTwo": "بيتزا بيبروني",
+        "wouldYouRatherMainId": "cmfchu6td000xun64c4a8niji",
+        "createdAt": "2025-09-09 11:55:00.997",
+        "updatedAt": "2025-09-09 11:55:00.997"
+    },
+    {
+        "id": "cmfchu6td0010un64c0jtlnbr",
+        "optionOne": "فطائر بالتمر",
+        "optionTwo": "فطائر بالجبن",
+        "wouldYouRatherMainId": "cmfchu6td000xun64c4a8niji",
+        "createdAt": "2025-09-09 11:55:00.997",
+        "updatedAt": "2025-09-09 11:55:00.997"
+    },
+    {
+        "id": "cmfchu6td0011un64cemhetwv",
+        "optionOne": "شاورما لحم",
+        "optionTwo": "شاورما دجاج",
+        "wouldYouRatherMainId": "cmfchu6td000xun64c4a8niji",
+        "createdAt": "2025-09-09 11:55:00.997",
+        "updatedAt": "2025-09-09 11:55:00.997"
+    },
+    {
+        "id": "cmfchu6td0012un64d5ahm0gx",
+        "optionOne": "سلطة فواكه",
+        "optionTwo": "سلطة خضار",
+        "wouldYouRatherMainId": "cmfchu6td000xun64c4a8niji",
+        "createdAt": "2025-09-09 11:55:00.997",
+        "updatedAt": "2025-09-09 11:55:00.997"
+    },
+    {
+        "id": "cmfchu6td0013un64319rb8hh",
+        "optionOne": "بيتزا مع أناناس",
+        "optionTwo": "بيتزا بدون أناناس",
+        "wouldYouRatherMainId": "cmfchu6td000xun64c4a8niji",
+        "createdAt": "2025-09-09 11:55:00.997",
+        "updatedAt": "2025-09-09 11:55:00.997"
+    },
+    {
+        "id": "cmfchu6td0014un64cgnfccjm",
+        "optionOne": "فطور مع البان كيك",
+        "optionTwo": "فطور مع الوافل",
+        "wouldYouRatherMainId": "cmfchu6td000xun64c4a8niji",
+        "createdAt": "2025-09-09 11:55:00.997",
+        "updatedAt": "2025-09-09 11:55:00.997"
+    },
+    {
+        "id": "cmfchu6td0015un649qhoojeh",
+        "optionOne": "قهوة باردة",
+        "optionTwo": "قهوة ساخنة",
+        "wouldYouRatherMainId": "cmfchu6td000xun64c4a8niji",
+        "createdAt": "2025-09-09 11:55:00.997",
+        "updatedAt": "2025-09-09 11:55:00.997"
+    },
+    {
+        "id": "cmfchu6td0016un64jg4bx6yd",
+        "optionOne": "وجبة حارة",
+        "optionTwo": "وجبة خفيفة",
+        "wouldYouRatherMainId": "cmfchu6td000xun64c4a8niji",
+        "createdAt": "2025-09-09 11:55:00.997",
+        "updatedAt": "2025-09-09 11:55:00.997"
+    },
+    {
+        "id": "cmfchu6td0017un640s0286fc",
+        "optionOne": "سوشي",
+        "optionTwo": "تاكوس",
+        "wouldYouRatherMainId": "cmfchu6td000xun64c4a8niji",
+        "createdAt": "2025-09-09 11:55:00.997",
+        "updatedAt": "2025-09-09 11:55:00.997"
+    },
+    {
+        "id": "cmfci2bw20019un643yht0gfz",
+        "optionOne": "الجري لمسافات طويلة",
+        "optionTwo": "التنس",
+        "wouldYouRatherMainId": "cmfci2bw20018un64u5lumz03",
+        "createdAt": "2025-09-09 12:01:17.516",
+        "updatedAt": "2025-09-09 12:01:17.516"
+    },
+    {
+        "id": "cmfci2bw2001aun64nmgkfzpq",
+        "optionOne": "ركوب الخيل",
+        "optionTwo": "البلياردو",
+        "wouldYouRatherMainId": "cmfci2bw20018un64u5lumz03",
+        "createdAt": "2025-09-09 12:01:17.516",
+        "updatedAt": "2025-09-09 12:01:17.516"
+    }
+]

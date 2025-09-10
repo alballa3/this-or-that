@@ -4,7 +4,6 @@ import { userChoise, WouldYouRatherQuestion } from "@/types";
 import { useEffect, useState } from "react";
 import { ChevronRight, RotateCcw, Sparkles, Plus } from "lucide-react";
 import { useRouter } from "next/router";
-import Custom404 from "../404";
 import { useTranslations } from "next-intl";
 import { GetServerSidePropsContext } from 'next';
 
