@@ -1,3 +1,6 @@
+﻿-- CreateSchema
+CREATE SCHEMA IF NOT EXISTS "public";
+
 -- CreateTable
 CREATE TABLE "public"."WouldYouRatherMain" (
     "id" TEXT NOT NULL,
@@ -22,3 +25,4 @@ CREATE TABLE "public"."WouldYouRatherQuestion" (
 
 -- AddForeignKey
 ALTER TABLE "public"."WouldYouRatherQuestion" ADD CONSTRAINT "WouldYouRatherQuestion_wouldYouRatherMainId_fkey" FOREIGN KEY ("wouldYouRatherMainId") REFERENCES "public"."WouldYouRatherMain"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+

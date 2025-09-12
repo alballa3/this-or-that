@@ -15,6 +15,7 @@ export default function Home() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
   const [selectedQuestion, setSelectedQuestion] = useState<userChoise>()
   const [isCheck, setIsCheck] = useState(true)
+  const [title,setTitle]=useState("")
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [showCompletion, setShowCompletion] = useState(false);
 
@@ -25,12 +26,11 @@ export default function Home() {
 
       const res = await fetch(`/api/main/${id}`)
       const json = await res.json()
-      console.log(json, `/api/main/${id}`)
       if (!res.ok) {
         router.push('/404')
         return;
       }
-
+      setTitle(json.title)
       setQuestion(json.question.sort(() => Math.random() - 0.5))
     }
     handle()
@@ -79,7 +79,7 @@ export default function Home() {
           <div className="animate-bounce">
             <Sparkles className="w-16 h-16 text-blue-300 mx-auto mb-4" />
           </div>
-          <h1 className="text-4xl font-bold text-white mb-4">{t("completion.title")}</h1>
+          <h1 className="text-4xl font-bold text-white mb-4">{title}</h1>
           <p className="text-gray-300 text-lg mb-8">
             {t("completion.message", { count: questions.length })}
           </p>
